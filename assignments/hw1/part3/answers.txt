@@ -1,0 +1,52 @@
+# CS 503 — HW1 Part 3: Pipes and Text Processing
+# Write your answers below in the specified format.
+# For each question, provide your pipeline command and the output.
+#
+# Format:
+#   Q1:
+#   COMMAND: <your pipeline here>
+#   ANSWER: <the output>
+
+Q1:
+COMMAND:
+ANSWER:
+
+Q2:
+COMMAND:
+ANSWER:
+
+Q3:
+COMMAND:
+ANSWER:
+
+Q4:
+COMMAND:
+ANSWER:
+
+Q5:
+COMMAND:
+ANSWER:
+
+Q6:
+COMMAND:
+ANSWER:
+
+Q7:
+COMMAND:
+ANSWER:
+
+Q8:
+COMMAND:
+ANSWER:
+
+Q9:
+COMMAND:
+ANSWER:
+
+Q10:
+COMMAND:
+ANSWER:
+
+Q11:
+COMMAND:
+ANSWER:

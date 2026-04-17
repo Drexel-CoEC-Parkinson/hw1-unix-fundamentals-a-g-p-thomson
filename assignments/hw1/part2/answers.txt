@@ -1,0 +1,68 @@
+# CS 503 — HW1 Part 2: File Permissions
+#
+# SECTION A: chmod Commands
+# For each file, write the exact chmod command you used to fix its
+# permissions. One command per file.
+#
+# Example:
+#   some_file.txt: chmod 644 some_file.txt
+# ====================================================================
+
+deploy.sh:chmod 755 deploy.sh
+
+database_backup.sh:chmod 700 database_backup.sh
+
+api_keys.conf:chmod 600 api_keys.conf
+
+shared_data.csv:chmod 644 shared_data.csv
+
+report_generator.py:chmod 755 report_generator.py
+
+experiment_log.txt:chmod 644 experiment_log.txt
+
+project_dir/:chmod 755 project_dir/
+
+run_tests.sh:chmod 755 run_tests.sh
+
+
+# ====================================================================
+# SECTION B: Conceptual Questions
+# Answer each question in a few sentences.
+# ====================================================================
+
+# Q2a. A file has permissions rw-r----- and is owned by user alice and
+# group mlteam. Can user bob, who is a member of mlteam, execute the
+# file? Can he read it?
+
+Q2a: Group has only read only access. Since Bob is a member of mlteam group he has group permission that doesn’t have execute access.
+Can bob read the file ? Yes the group has read permission.
+
+
+# Q2b. You run ls -l and see -rwxrwxrwx on a file containing your API
+# keys. Explain why this is a problem and what permissions you would
+# set instead. Give the chmod command you would use.
+
+Q2b:-rwxrwxrwx (777) means every user on the system can read, write, and execute the file. For an API keys file, this is a serious security risk because any user can read and steal the keys, or
+modify/delete them. API key files should never be world-readable.
+
+Fix: chmod 600 api_keys.conf 
+  This sets rw-------, giving only the owner read and write access.
+   No other user can access the file at all.
+
+# Q2c. A directory has permissions rwxr-xr-x. You are not the owner
+# and not in the group. Can you list the directory's contents? Can you
+# create a new file inside it? Explain why or why not.
+
+Q2c:Since I am not the owner and not in the group, I fall under "others" permissions, which are r-x.
+YES — the "r" (read) bit on a directory allows listing its contents with ls.
+NO — creating a file requires the "w" (write) bit on the directory. Others only have r-x (no write), so file creation is not permitted.
+
+
+# Q2d. What is the difference between chmod 755 and chmod u=rwx,go=rx?
+
+Q2d:chmod 755 and chmod u=rwx,go=rx produce exactly the same result:rwxr-xr-x (owner gets read/write/execute, group and others get read/execute only).
+The difference is notation style:
+- chmod 755 uses numeric (octal) notation where each digit is the sum of r=4, w=2, x=1.
+- chmod u=rwx,go=rx uses symbolic notation, explicitly naming who (u=user, g=group, o=others) gets which permissions.
+ Both are equivalent — numeric is shorter, symbolic is more readable.
+
